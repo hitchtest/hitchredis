@@ -35,11 +35,11 @@ class RedisPackage(HitchPackage):
             raise HitchException("Redis version needed is {}, output is: {}.".format(self.version, version_output))
 
     def build(self):
-        utils.download_file("redis-{}.tar.gz".format(self.version), "http://download.redis.io/releases/redis-{}.tar.gz".format(self.version))
+        download_to = join(self.get_downloads_directory(), "redis-{}.tar.gz".format(self.version))
+        utils.download_file(download_to, "http://download.redis.io/releases/redis-{}.tar.gz".format(self.version))
         if not exists(self.directory):
             makedirs(self.directory)
-            utils.extract_archive("redis-{}.tar.gz".format(self.version), self.directory)
-            
+            utils.extract_archive(download_to, self.directory)
             chdir(join(self.directory, "redis-{}".format(self.version)))
             call(["make"])
         self.bin_directory = join(self.directory, "redis-{}".format(self.version), "src")
