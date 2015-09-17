@@ -1,5 +1,6 @@
 from hitchtest import HitchPackage, utils
 from subprocess import check_output, call
+from hitchtest.environment import checks
 from os.path import join, exists
 from os import makedirs, chdir
 
@@ -28,6 +29,8 @@ class RedisPackage(HitchPackage):
         else:
             self.directory = directory
         self.bin_directory = bin_directory
+
+        checks.packages(["build-essential", ])
 
     def verify(self):
         version_output = check_output([self.server, "--version"]).decode('utf8')
