@@ -1,6 +1,5 @@
 from hitchtest import HitchPackage, utils
 from subprocess import check_output, call
-from hitchtest.environment import checks
 from os.path import join, exists
 from os import makedirs, chdir
 
@@ -17,7 +16,7 @@ class RedisPackage(HitchPackage):
         '2.8.16', '2.8.17', '2.8.18', '2.8.19', '2.8.20', '2.8.21',
         '3.0.0-rc1', '3.0.0', '3.0.1', '3.0.2', '3.0.3', '3.0.4',
     ]
-    
+
     name = "Redis"
 
     def __init__(self, version, directory=None, bin_directory=None):
@@ -29,8 +28,6 @@ class RedisPackage(HitchPackage):
         else:
             self.directory = directory
         self.bin_directory = bin_directory
-
-        checks.packages(["build-essential", ])
 
     def verify(self):
         version_output = check_output([self.server, "--version"]).decode('utf8')
