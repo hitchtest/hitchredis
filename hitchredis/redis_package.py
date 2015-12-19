@@ -14,12 +14,12 @@ class RedisPackage(HitchPackage):
         '2.8.6', '2.8.7', '2.8.8', '2.8.9', '2.8.10',
         '2.8.11', '2.8.12', '2.8.13', '2.8.14', '2.8.15',
         '2.8.16', '2.8.17', '2.8.18', '2.8.19', '2.8.20', '2.8.21',
-        '3.0.0-rc1', '3.0.0', '3.0.1', '3.0.2', '3.0.3', '3.0.4', '3.0.5',
+        '3.0.0-rc1', '3.0.0', '3.0.1', '3.0.2', '3.0.3', '3.0.4', '3.0.5', '3.0.6',
     ]
 
     name = "Redis"
 
-    def __init__(self, version="3.0.5", directory=None, bin_directory=None):
+    def __init__(self, version="3.0.6", directory=None, bin_directory=None):
         super(RedisPackage, self).__init__()
         self.version = self.check_version(version, self.VERSIONS, ISSUES_URL)
 
